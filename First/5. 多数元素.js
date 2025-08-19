@@ -2,6 +2,33 @@
  * @param {number[]} nums
  * @return {number}
  */
+// 1.暴力解法
+var majorityElement1 = function (nums) {
+  let array = new Map();
+
+  for (let i = 0; i < nums.length; i++) {
+    if (!array.has(nums[i])) {
+      array.set(nums[i], 1);
+    } else {
+      array.set(nums[i], array.get(nums[i]) + 1);
+    }
+  }
+
+  let max = 0;
+  let maxKey = 0;
+  for (const [key, value] of array) {
+    if (value > max) {
+      max = value;
+      maxKey = key;
+    }
+  }
+
+  return maxKey;
+};
+
+console.log(majorityElement1((nums = [3, 2, 3])));
+console.log(majorityElement1((nums = [2, 2, 1, 1, 1, 2, 2])));
+
 // 2.摩尔投票算法
 // 多数元素是指在数组中出现次数 大于 ⌊ n/2 ⌋ 的元素
 // 所以可以采用，消除的方式
