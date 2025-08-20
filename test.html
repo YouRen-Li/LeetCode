@@ -12,35 +12,30 @@
 </body>
 <script>
     /**
-  * @param {string} s
-  * @param {string} t
-  * @return {boolean}
-  */
-    var isAnagram = function (s, t) {
-        if (s.length != t.length) return false; //首先判断两个字符串长度是否相等，不相等则直接返回 false
-        const hashMap = new Array(26).fill(0); //若相等，则初始化 26 个字母哈希表
-        for (let i = 0; i < s.length; i++) {
-            //遍历字符串 s 和 t
-            hashMap[s.charCodeAt(i) - "a".charCodeAt(0)]++; //s 负责在对应位置增加
-            hashMap[t.charCodeAt(i) - "a".charCodeAt(0)]--; //t 负责在对应位置减少
-            console.log(
-                hashMap[s.charCodeAt(i) - "a".charCodeAt(0)]++,
-                hashMap[t.charCodeAt(i) - "a".charCodeAt(0)]--
-            );
+     * @param {number[]} nums
+     * @return {void} Do not return anything, modify nums in-place instead.
+     */
+    var moveZeroes = function (nums) {
+        let count = 0; //定义收集不是0的数的指针
+
+        // 开始收集不是0的数
+        for (let i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                nums[count++] = nums[i];
+            }
         }
 
-        console.log('hashMap:' + hashMap);
-
-        for (let i = 0; i < 26; i++) {
-            console.log('hashMap[i]:' + hashMap[i]);
-            if (hashMap[i] != 0) return false; //如果哈希表的值有1位不是0，则二者不是异位词
+        for (let i = count; i < nums.length; i++) {
+            nums[i] = 0;
         }
-
-        return true; //如果哈希表的值都为 0，则二者是字母异位词
+        return nums;
     };
 
-    // console.log(isAnagram((s = "anagram"), (t = "nagaram")));
-    console.log(isAnagram((s = "rat"), (t = "car")));
+    console.log(moveZeroes((nums = [0, 1, 0, 3, 12])));
+    // console.log(moveZeroes((nums = [0])));
+    // console.log(moveZeroes((nums = [0, 0, 1])));
+
+
 
 </script>
 
