@@ -1,25 +1,21 @@
 /**
- * @param {number[]} nums
- * @return {void} Do not return anything, modify nums in-place instead.
+ * @param {number[]} digits
+ * @return {number[]}
  */
-var moveZeroes = function (nums) {
-  let count = 0; //计算数组中0的个数
-
-  //遍历数组
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] != 0) {
-      nums[count] = nums[i]; //如果数组的元素不为0，那么提到第一位
-      count++; //0的个数+1
+var plusOne = function (digits) {
+  for (let i = digits.length - 1; i >= 0; i--) {
+    digits[i]++;
+    if (digits[i] < 10) {
+      return digits;
     }
+    digits[i] = 0;
   }
-
-  for (let j = count; j < nums.length; j++) {
-    nums[j] = 0; //数组中的0个数，全部在最后补0补上
-  }
-
-  return nums;
+  digits.unshift(1);
+  return digits;
 };
 
-console.log(moveZeroes((nums = [0, 1, 0, 3, 12])));
-console.log(moveZeroes((nums = [0])));
-console.log(moveZeroes((nums = [0, 1, 4, 0, 5, 6])));
+console.log(plusOne((digits = [9])));
+console.log(plusOne((digits = [0])));
+console.log(plusOne((digits = [9, 9])));
+console.log(plusOne((digits = [1, 2, 2])));
+console.log(plusOne((digits = [4, 3, 2, 1])));
