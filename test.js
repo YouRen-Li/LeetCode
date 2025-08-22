@@ -1,21 +1,26 @@
 /**
- * @param {number[]} digits
- * @return {number[]}
+ * @param {number[]} prices
+ * @return {number}
  */
-var plusOne = function (digits) {
-  for (let i = digits.length - 1; i >= 0; i--) {
-    digits[i]++;
-    if (digits[i] < 10) {
-      return digits;
+var maxProfit = function (prices) {
+  let min = Math.min(...prices);
+  let max = null;
+
+  for (let i = 0; i < prices.length; i++) {
+    if (prices[i] == min) {
+      prices.splice(0, i + 1);
+      if (prices.length == 0) {
+        return 0;
+      }
+      max = Math.max(...prices);
     }
-    digits[i] = 0;
   }
-  digits.unshift(1);
-  return digits;
+  return max - min;
 };
 
-console.log(plusOne((digits = [9])));
-console.log(plusOne((digits = [0])));
-console.log(plusOne((digits = [9, 9])));
-console.log(plusOne((digits = [1, 2, 2])));
-console.log(plusOne((digits = [4, 3, 2, 1])));
+
+console.log(maxProfit([2, 4, 1]));
+console.log(maxProfit([7, 6, 4, 3, 1]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+
+
