@@ -2,6 +2,27 @@
  * @param {number[]} prices
  * @return {number}
  */
+// 这个答案符合要求，但是超时
+var maxProfit = function (prices) {
+  let sum = 0;
+  for (let i = 0; i < prices.length; i++) {
+    for (let j = i + 1; j < prices.length; j++) {
+      if (prices[j] - prices[i] > sum) {
+        sum = prices[j] - prices[i];
+      }
+    }
+  }
+  return sum;
+};
+
+console.log(maxProfit([2, 4, 1]));
+console.log(maxProfit([7, 6, 4, 3, 1]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
 var maxProfit = function (prices) {
   let min = prices[0]; //假设最初买入价为正无穷
   let profit = 0; //假设最初利润为0
@@ -19,7 +40,7 @@ var maxProfit = function (prices) {
     // 第二次，买入的价格此时还是2，当前的价格为4，所以利润为2
     // 第三次，买入的价格是1，当前的价格是1，所以利润为0
     // max是获取最大的那一次利润，所以利润最终结果还是为2
-    profit = Math.max(profit, price - min); 
+    profit = Math.max(profit, price - min);
   }
   return profit;
 };
