@@ -19,12 +19,9 @@ console.log(maxProfit([2, 4, 1]));
 console.log(maxProfit([7, 6, 4, 3, 1]));
 console.log(maxProfit([7, 1, 5, 3, 6, 4]));
 
-/**
- * @param {number[]} prices
- * @return {number}
- */
+// 该答案只有o1的次数，时间答案均符合
 var maxProfit = function (prices) {
-  let min = prices[0]; //假设最初买入价为正无穷
+  let min = prices[0]; //假设最初买入价为第一次的价格
   let profit = 0; //假设最初利润为0
 
   for (const price of prices) {
