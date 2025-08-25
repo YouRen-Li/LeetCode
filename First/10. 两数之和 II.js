@@ -5,6 +5,42 @@
  */
 // 超出时间限制
 var twoSum = function (numbers, target) {
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      if (numbers[i] + numbers[j] == target) {
+        return [i + 1, j + 1];
+      }
+    }
+  }
+};
+
+console.log(twoSum((numbers = [2, 7, 11, 15]), (target = 9)));
+console.log(twoSum((numbers = [2, 3, 4]), (target = 6)));
+console.log(twoSum((numbers = [-1, 0]), (target = -1)));
+console.log(twoSum((numbers = [0, 0, 3, 4]), (target = 0)));
+console.log(twoSum((numbers = [5, 25, 75]), (target = 100)));
+console.log(twoSum((numbers = [1, 2, 3, 4, 4, 9, 56, 90]), (target = 8)));
+
+// 2.前面两数之和的hash解法
+var twoSum = function (numbers, target) {
+  let map=new Map();
+  for(let i=0;i<numbers.length;i++){
+    if(map.has(target-numbers[i])){
+      return [map.get(target-numbers[i])+1,i+1];
+    }
+      map.set(numbers[i],i);
+  }
+};
+
+console.log(twoSum((numbers = [2, 7, 11, 15]), (target = 9)));
+console.log(twoSum((numbers = [2, 3, 4]), (target = 6)));
+console.log(twoSum((numbers = [-1, 0]), (target = -1)));
+console.log(twoSum((numbers = [0, 0, 3, 4]), (target = 0)));
+console.log(twoSum((numbers = [5, 25, 75]), (target = 100)));
+console.log(twoSum((numbers = [1, 2, 3, 4, 4, 9, 56, 90]), (target = 8)));
+
+// 3.标准解法，双指针法
+var twoSum = function (numbers, target) {
   let start = 0; //数组的第一个元素下标
   let over = numbers.length - 1; //数组的最后一个元素下标
   while (start < over) {
