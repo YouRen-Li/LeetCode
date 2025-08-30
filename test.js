@@ -1,20 +1,11 @@
 /**
- * @param {character[]} s
- * @return {void} Do not return anything, modify s in-place instead.
+ * @param {string} s
+ * @return {number}
  */
-var reverseString = function (s) {
-  let start = 0;
-  let end = s.length - 1;
-  while (start < end) {
-    let temp = s[start];
-    s[start] = s[end];
-    s[end] = temp;
-    start++;
-    end--;
-  }
-  return s;
+var lengthOfLongestSubstring = function (s) {
+  
 };
 
-console.log(reverseString((s = ["h", "e", "l", "l", "o"])));
-console.log(reverseString((s = ["H", "a", "n", "n", "a", "h"])));
-console.log(reverseString((s = ["h", "e", "l", "l", "o"])));
+console.log(lengthOfLongestSubstring((s = "abcabcbb")));
+console.log(lengthOfLongestSubstring((s = "bbbbb")));
+console.log(lengthOfLongestSubstring((s = "pwwkew")));
