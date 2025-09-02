@@ -4,6 +4,7 @@
  * @return {string}
  */
 // 这道题是困难，依然可以使用滑动窗口来计算
+// 这道题一个小时没做出来，后面继续做
 var minWindow = function (s, t) {
   let need = new Map(); //保存每个字符需要出现的次数
   let window = new Map(); //记录窗口里字符出现的次数
